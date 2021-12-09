@@ -1,6 +1,6 @@
 import 'package:chart_demo/data/list_chart_data.dart';
-import 'package:chart_demo/listChart/detail_chart/tab1.dart';
-import 'package:chart_demo/listChart/detail_chart/tab2.dart';
+import 'package:chart_demo/listChart/detail_chart/barchart_tab/tab1.dart';
+import 'package:chart_demo/listChart/detail_chart/barchart_tab/tab2.dart';
 import 'package:flutter/material.dart';
 
 class DetailChart extends StatefulWidget {
@@ -42,10 +42,14 @@ class _DetailChartState extends State<DetailChart> {
           ),
           
     
-        body: TabBarView(children: [
-         Tab1(),
-         Tab2()
-        ],),
+        body: TabBarView(
+          children: [
+            if (widget.listChartModel.title == 'Barchart')
+              BarchartTab1(),
+            if (widget.listChartModel.title == 'Barchart')
+              BarchartTab2()
+          ],
+        ),
       ),
     );
   }
