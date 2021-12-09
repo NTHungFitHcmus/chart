@@ -4,14 +4,14 @@ import 'package:charts_flutter/src/text_element.dart';
 import 'package:charts_flutter/src/text_style.dart' as style;
 import 'dart:math';
 
-class BarchartTab1 extends StatefulWidget {
-  const BarchartTab1({ Key? key }) : super(key: key);
+class BarchartMultiTab1 extends StatefulWidget {
+  const BarchartMultiTab1({ Key? key }) : super(key: key);
 
   @override
-  _BarchartTab1State createState() => _BarchartTab1State();
+  _BarchartMultiTab1State createState() => _BarchartMultiTab1State();
 }
 
-class _BarchartTab1State extends State<BarchartTab1> {
+class _BarchartMultiTab1State extends State<BarchartMultiTab1> {
   List<charts.Series>? seriesList;
   bool? animate = false;
 
@@ -73,7 +73,7 @@ class _BarchartTab1State extends State<BarchartTab1> {
         labelJustification: charts.TickLabelJustification.outside,
       )),
       behaviors: [
-        // new charts.SeriesLegend(),
+        new charts.SeriesLegend(),
         // new charts.SlidingViewport(),
         new charts.InitialHintBehavior(maxHintTranslate: 4.0),
         new charts.PanAndZoomBehavior(),
@@ -84,12 +84,11 @@ class _BarchartTab1State extends State<BarchartTab1> {
       selectionModels:[
         charts.SelectionModelConfig(
           changedListener: (model) {
-            // show the dialog
             showDialog(
               context: context,
               builder: (BuildContext context) {
                 return alert(model.selectedSeries[0].domainFn(model.selectedDatum[0].index) + ' '
-                   + model.selectedSeries[0].measureFn(model.selectedDatum[0].index).toString());
+                   + model.selectedSeries[0].domainFn(model.selectedDatum[1].index).toString());
               },
             );
       //       // showtool(
@@ -143,26 +142,6 @@ class _BarchartTab1State extends State<BarchartTab1> {
       new OrdinalSales('28', 100),
       new OrdinalSales('29', 75),
       new OrdinalSales('30', 80),
-      new OrdinalSales('31', 5),
-      new OrdinalSales('32', 25),
-      new OrdinalSales('33', 100),
-      new OrdinalSales('34', 75),
-      new OrdinalSales('35', 80),
-      new OrdinalSales('36', 5),
-      new OrdinalSales('37', 25),
-      new OrdinalSales('38', 100),
-      new OrdinalSales('39', 75),
-      new OrdinalSales('40', 80),
-      new OrdinalSales('41', 5),
-      new OrdinalSales('42', 25),
-      new OrdinalSales('43', 100),
-      new OrdinalSales('44', 75),
-      new OrdinalSales('45', 80),
-      new OrdinalSales('46', 5),
-      new OrdinalSales('47', 25),
-      new OrdinalSales('48', 100),
-      new OrdinalSales('49', 75),
-      new OrdinalSales('50', 80),
     ];
 
     return [
@@ -177,15 +156,25 @@ class _BarchartTab1State extends State<BarchartTab1> {
           colorFn: (OrdinalSales sales, _) => charts.Color.fromHex(code: '#ABCABC'),
           // fillColorFn: (OrdinalSales sales, _) => charts.Color.fromHex(code: '#DEFDEF'),
       ),
+      new charts.Series<OrdinalSales, String>(
+          id: 'Marketing',
+          domainFn: (OrdinalSales sales, _) => sales.year,
+          measureFn: (OrdinalSales sales, _) => sales.sales,
+          data: data,
+          // Set a label accessor to control the text of the bar label.
+          labelAccessorFn: (OrdinalSales sales, _) =>
+              '${sales.year}: \$${sales.sales.toString()}',
+          colorFn: (OrdinalSales sales, _) => charts.Color.fromHex(code: '#ACACAC'),
+          // fillColorFn: (OrdinalSales sales, _) => charts.Color.fromHex(code: '#DEFDEF'),
+      ),
     ];
   }
+}
 
-  AlertDialog alert(String text) => AlertDialog(
+AlertDialog alert(String text) => AlertDialog(
     title: Text("My title"),
     content: Text(text),
   );
-
-}
 
 /// Sample ordinal data type.
 class OrdinalSales {
