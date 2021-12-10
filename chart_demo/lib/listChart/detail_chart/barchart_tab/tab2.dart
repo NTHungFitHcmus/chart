@@ -17,13 +17,14 @@ class _BarchartTab2State extends State<BarchartTab2> {
         children: [
           Text("- Giới hạn số lượng cột 1 màn hình"),
           Text("- Kéo để xem thêm cột"),
-          Text("- Màu cột"),
+          Text("- Màu, độ dày cột"),
           Text("- Màu chữ"),
           Text("- Xoay ngang dọc"),
           Text("- Ẩn hiện title cột hàng"),
           Text("- Sự kiện (show dialog) khi click cột"),
           Text("- Nghiêng title"),
           Text("- Vạch kẻ của cột hàng"),
+          Text("- Zoom thêm bớt cột"),
         ],
       ),
     );

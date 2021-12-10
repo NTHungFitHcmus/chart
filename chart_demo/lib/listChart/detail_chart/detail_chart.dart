@@ -7,6 +7,10 @@ import 'package:chart_demo/listChart/detail_chart/linechart_multi_tab/tab1.dart'
 import 'package:chart_demo/listChart/detail_chart/linechart_multi_tab/tab2.dart';
 import 'package:chart_demo/listChart/detail_chart/linechart_tab/tab1.dart';
 import 'package:chart_demo/listChart/detail_chart/linechart_tab/tab2.dart';
+import 'package:chart_demo/listChart/detail_chart/mixchart_tab/tab1.dart';
+import 'package:chart_demo/listChart/detail_chart/mixchart_tab/tab2.dart';
+import 'package:chart_demo/listChart/detail_chart/piechart_tab/tab1.dart';
+import 'package:chart_demo/listChart/detail_chart/piechart_tab/tab2.dart';
 import 'package:flutter/material.dart';
 
 class DetailChart extends StatefulWidget {
@@ -67,6 +71,14 @@ class _DetailChartState extends State<DetailChart> {
               LinechartMultiTab1(),
             if (widget.listChartModel.title == 'Linechart multi')
               LinechartMultiTab2(),
+            if (widget.listChartModel.title == 'Piechart')
+              PiechartTab1(),
+            if (widget.listChartModel.title == 'Piechart')
+              PiechartTab2(),
+            if (widget.listChartModel.title == 'Mix barchart and linechart')
+              MixchartTab1(),
+            if (widget.listChartModel.title == 'Mix barchart and linechart')
+              MixchartTab2(),
           ],
         ),
       ),

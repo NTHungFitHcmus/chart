@@ -17,10 +17,12 @@ class _LinechartMultiTab2State extends State<LinechartMultiTab2> {
         children: [
           Text("- Giới hạn khoảng thời gian 1 màn hình"),
           Text("- Kéo để xem thêm đường"),
-          Text("- Màu đường"),
+          Text("- Màu, độ dày đường"),
           Text("- Màu chữ"),
           Text("- Sự kiện (show dialog) khi click đường"),
           Text("- Chú thích đường"),
+          Text("- Zoom thêm bớt khoảng thời gian"),
+          Text("- Thêm đơn vị thứ 3"),
         ],
       ),
     );
